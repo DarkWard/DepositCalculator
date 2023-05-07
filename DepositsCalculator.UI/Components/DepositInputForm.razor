@@ -1,0 +1,35 @@
+﻿<EditForm Model="@_deposit" OnValidSubmit="@SubmitValidForm">
+    <FluentValidationValidator />
+
+    <div>
+        <InputNumber id="balance" area-lable="Balance" placeholder="Balance" @bind-Value="_deposit.Balance"></InputNumber>
+        <ValidationMessage For="@(() => _deposit.Balance)" />
+    </div>
+    <div>
+        <InputNumber id="term" area-lable="Term" placeholder="Term" @bind-Value="_deposit.Term"></InputNumber>
+        <ValidationMessage For="@(() => _deposit.Term)" />
+    </div>
+    <div>
+        <InputNumber id="percents" area-lable="Percents" placeholder="Percents" @bind-Value="_deposit.Percents"></InputNumber>
+        <ValidationMessage For="@(() => _deposit.Percents)" />
+    </div>
+    <div>
+        <InputRadioGroup @bind-Value="_deposit.InterestType">
+            <br />
+            Calculation type:
+            <br />
+
+            @foreach (var type in Enum.GetValues<InterestsType>())
+            {
+                <div>
+                    <InputRadio Value="type" />
+                    <text>@type Interests</text>
+                </div>
+            }
+            <ValidationMessage For="@(() => _deposit.InterestType)" />
+        </InputRadioGroup>
+    </div>
+    <div>
+        <button type="submit">Calculate</button>
+    </div>
+</EditForm>

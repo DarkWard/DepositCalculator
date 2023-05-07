@@ -1,0 +1,19 @@
+﻿@page "/"
+
+<div class="row">
+    <div class="deposit-placing">
+
+        <DepositInputForm OnSendIfDataRequested="spinner => IsSpinnerEnabled = spinner"
+                          OnSendCalculatedInterests="interests => CalculatedInterests = interests" />
+    </div>
+    <div class="deposit-placing">
+        @if (IsSpinnerEnabled)
+        {
+            <Spinner />
+        }
+        else
+        {
+            <CalculatedDepositTable CalculatedInterestsList="CalculatedInterests"/>
+        }
+    </div>
+</div>
