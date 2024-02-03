@@ -5,6 +5,8 @@ namespace DepositsCalculator.API
 {
     public class Program
     {
+
+        // I still need this comment
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
